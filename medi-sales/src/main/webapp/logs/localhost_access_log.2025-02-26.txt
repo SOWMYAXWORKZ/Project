@@ -1,0 +1,10 @@
+0:0:0:0:0:0:0:1 - - [26/Feb/2025:16:51:36 +0530] "GET /medi-sales HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [26/Feb/2025:16:51:40 +0530] "GET /medi-sales/ HTTP/1.1" 200 12050
+0:0:0:0:0:0:0:1 - - [26/Feb/2025:16:52:03 +0530] "GET /medi-sales/signup HTTP/1.1" 200 7902
+0:0:0:0:0:0:0:1 - - [26/Feb/2025:16:52:04 +0530] "GET /medi-sales/URLToReachStaticFolder/js/signup.js HTTP/1.1" 200 6033
+0:0:0:0:0:0:0:1 - - [26/Feb/2025:16:52:04 +0530] "GET /medi-sales/URLToReachStaticFolder/css/signup.css HTTP/1.1" 200 1849
+0:0:0:0:0:0:0:1 - - [26/Feb/2025:16:52:30 +0530] "GET /medi-sales/signin HTTP/1.1" 200 3981
+0:0:0:0:0:0:0:1 - - [26/Feb/2025:16:52:30 +0530] "GET /medi-sales/URLToReachStaticFolder/js/signin.js HTTP/1.1" 200 242
+0:0:0:0:0:0:0:1 - - [26/Feb/2025:16:52:30 +0530] "GET /medi-sales/URLToReachStaticFolder/css/signin.css HTTP/1.1" 200 1356
+0:0:0:0:0:0:0:1 - - [26/Feb/2025:16:52:43 +0530] "GET /medi-sales/signup HTTP/1.1" 200 7902
+0:0:0:0:0:0:0:1 - - [26/Feb/2025:16:52:49 +0530] "GET /medi-sales/signin HTTP/1.1" 200 3981

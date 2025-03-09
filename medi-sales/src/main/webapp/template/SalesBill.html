@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medi-Sales-Invoice-Bill</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .invoice-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .details-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .details-box {
+            flex: 1;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            min-width: 250px;
+        }
+
+        .details-box p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        th {
+            background: #f2f2f2;
+        }
+
+        .total-section {
+            text-align: right;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            padding-right: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .details-container {
+                flex-direction: column;
+            }
+
+            table {
+                font-size: 12px;
+            }
+        }
+    </style>
+    <script>
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            html2canvas(document.querySelector(".invoice-container"), { scale: 2, useCORS: true })
+                .then(canvas => {
+                    const imgData = canvas.toDataURL("image/png");
+                    const imgWidth = 210;
+                    const pageHeight = 297;
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                    let heightLeft = imgHeight;
+                    let position = 0;
+
+                    doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+
+                    while (heightLeft > 0) {
+                        position -= pageHeight;
+                        doc.addPage();
+                        doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+                        heightLeft -= pageHeight;
+                    }
+
+                    doc.save("invoice.pdf");
+                });
+        }
+    </script>
+</head>
+
+<body>
+<div class="invoice-container">
+    <div class="header">
+        <h1>MediSales Invoice Bill</h1>
+    </div>
+
+    <div class="details-container">
+        <div class="details-box">
+            <p><strong>Vendor Details:</strong></p>
+            <p>Company Name: <span th:text="${person.companyName}"></span></p>
+        </div>
+
+        <div class="details-box">
+            <p><strong>Buyer Details:</strong></p>
+            <p>Name: <span th:text="${person.contactPerson}"></span></p>
+            <p>Phone No: <span th:text="${person.mobile}"></span></p>
+        </div>
+
+        <div class="details-box">
+            <th:block th:each="bill : ${bills}">
+                <p><strong>Bill No:</strong> <span th:text="${bill.billNo}"></span></p>
+                <p><strong>Bill Date:</strong> <span th:text="${bill.billDate}"></span></p>
+            </th:block>
+
+        </div>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>HSN Number</th>
+            <th>Batch Number</th>
+            <th>MFG Date</th>
+            <th>EXP Date</th>
+            <th>Rate</th>
+            <th>Quantity</th>
+            <th>GST (%)</th>
+            <th>Discount (%)</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dto : ${sales}">
+            <td th:text="${dto.productName}"></td>
+            <td th:text="${dto.hsn}"></td>
+            <td th:text="${dto.batchNumber}"></td>
+            <td th:text="${dto.mfgDate}"></td>
+            <td th:text="${dto.expDate}"></td>
+            <td th:text="${dto.rate}"></td>
+            <td th:text="${dto.quantity}"></td>
+            <td th:text="${dto.gst}"></td>
+            <td th:text="${dto.discount}"></td>
+            <td th:text="${dto.amount}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="total-section">
+        <p><strong>Total:</strong> <span th:text="${totalAmount}"></span></p>
+    </div>
+
+    <button onclick="generatePDF()">Download PDF</button>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+/* signin.css */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-purple-100 {
+    background-color: #E9D8FD;
+}
+
+.bg-purple-500 {
+    background-color: #6B46C1;
+}
+
+.bg-purple-700 {
+    background-color: #4C51BF;
+}
+
+.text-purple-700 {
+    color: #4C51BF;
+}
+
+.text-gray-700 {
+    color: #4A5568;
+}
+
+.text-gray-500 {
+    color: #A0AEC0;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Large shadow */
+}
+
+.flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+.max-w-4xl {
+    max-width: 64rem;
+}
+
+.p-8 {
+    padding: 2rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.outline-none {
+    outline: none;
+}
+
+.text-black {
+    color: black;

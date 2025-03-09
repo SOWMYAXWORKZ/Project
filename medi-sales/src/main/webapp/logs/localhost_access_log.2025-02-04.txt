@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:16:11 +0530] "POST /medi-sales/signin HTTP/1.1" 200 4996
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:16:19 +0530] "GET /medi-sales/vendorsvoicebills HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:17:10 +0530] "GET /medi-sales/vendorsvoicebills HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:18:37 +0530] "GET /medi-sales/vendorsvoicebills HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:18:45 +0530] "POST /medi-sales/signin HTTP/1.1" 200 4994
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:18:49 +0530] "GET /medi-sales/vendorsalesbill HTTP/1.1" 405 749
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:22:35 +0530] "POST /medi-sales/signin HTTP/1.1" 200 4994
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:22:41 +0530] "GET /medi-sales/vendorsalesbill HTTP/1.1" 500 3436
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:23:57 +0530] "GET /medi-sales/vendorsalesbill HTTP/1.1" 500 3514
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:35:51 +0530] "GET /medi-sales/vendorsalesbill HTTP/1.1" 200 6782
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:38:48 +0530] "POST /medi-sales/vendorsalesbill HTTP/1.1" 400 880
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:43:51 +0530] "POST /medi-sales/vendorsalesbill HTTP/1.1" 400 880
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:43:58 +0530] "GET /medi-sales/vendorsalesbill HTTP/1.1" 200 6864
+0:0:0:0:0:0:0:1 - - [04/Feb/2025:17:44:24 +0530] "POST /medi-sales/vendorsalesbill HTTP/1.1" 500 9533
